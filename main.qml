@@ -12,38 +12,66 @@ Window {
         width: 500;
         height: 50;
 
-        Item {
+        RibbonModel {
+            id: summaryStatsRibbon
+        }
+
+        Component {
+            id: ribbonButtonDelegate
+
+            RibbonButton {
+                text: _text
+                source: _source
+                menu: _menu
+            }
+        }
+
+        Row {
             id: merengue
 
-            RibbonButton {
-                anchors.left: parent.left
-                id: ttestbutton
-                text: "T-Tests"
-                source: "qrc:/icons/analysis-bayesian-ttest.svg"
-            }
-
-            RibbonButton {
-                anchors.left: ttestbutton.right
-                id: regressionbutton
-                text: "Regression"
-                source: "qrc:/icons/analysis-bayesian-crosstabs.svg"
-            }
-
-            RibbonButton {
-                anchors.left: regressionbutton.right
-
-                id: f_button
-                text: "Frequencies"
-                source: "qrc:/icons/analysis-bayesian-regression.svg"
+            Repeater {
+                id: tabs
+                model: summaryStatsRibbon
+                delegate: ribbonButtonDelegate
             }
 
             ToolSeparator {
-                anchors.left: f_button.right
-
                 height: 60;
             }
-
         }
+
+        // Item {
+        //     id: merengue
+        //
+        //     RibbonButton {
+        //         anchors.left: parent.left
+        //         id: ttestbutton
+        //         text: "T-Tests"
+        //         source: "qrc:/icons/analysis-bayesian-ttest.svg"
+        //     }
+        //
+        //     RibbonButton {
+        //         anchors.left: ttestbutton.right
+        //         id: regressionbutton
+        //         text: "Regression"
+        //         source: "qrc:/icons/analysis-bayesian-crosstabs.svg"
+        //     }
+        //
+        //     RibbonButton {
+        //         anchors.left: regressionbutton.right
+        //
+        //         id: f_button
+        //         text: "Frequencies"
+        //         source: "qrc:/icons/analysis-bayesian-regression.svg"
+        //     }
+        //
+        //     ToolSeparator {
+        //         anchors.left: f_button.right
+        //
+        //         height: 60;
+        //     }
+        //
+        // }
 
         MouseArea {
             // This ain't working
@@ -57,4 +85,3 @@ Window {
     }
 
 }
-

@@ -1,13 +1,14 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>RibbonModel.qml</file>
         <file>RibbonButton.qml</file>
+        <file>AnalysesMenu.qml</file>
     </qresource>
     <qresource prefix="/">
         <file>icons/analysis-bayesian-anova.svg</file>
         <file>icons/analysis-bayesian-crosstabs.svg</file>
         <file>icons/analysis-bayesian-regression.svg</file>
-        <file>icons/analysis-bayesian-crosstabs.svg</file>
         <file>icons/analysis-bayesian-ttest.svg</file>
     </qresource>
 </RCC>

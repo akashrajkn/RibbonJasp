@@ -8,6 +8,7 @@ Rectangle {
     height: 60 // backgroundImage.height + innerText.height
     property alias text: innerText.text
     property alias source: backgroundImage.source
+    property alias menu: popup.menu
     // property alias menu: contextMenu
 
     signal clicked
@@ -66,72 +67,9 @@ Rectangle {
         }
     }
 
-
-    Popup {
-        closePolicy: Popup.CloseOnPressOutside | Popup.CloseOnEscape
+    AnalysesMenu {
         id: popup
-        width: {
-            var max_width = t1.width
-            if (t2.width > max_width) {
-                max_width = t2.width
-            }
-
-            if (t3.width > max_width) {
-                max_width = t3.width
-            }
-
-            return max_width + 25
-
-            //
-            // var result = 0;
-            // var padding = 0;
-            // for (var i = 0; i < popupitems.count; ++i) {
-            //     var item = popupitems.itemAt(i);
-            //     result = Math.max(item.contentItem.implicitWidth, result);
-            //     padding = Math.max(item.padding, padding);
-            // }
-            // return result + padding * 2;
-        }
-        height: (t1.implicitHeight + t2.implicitHeight + t3.implicitHeight) + 25
-        modal: true
-        focus: false
-
-        y: mice.mouseY
-        x: mice.mouseX
-
-        Item {
-            id: popupitems
-            Button {
-                id: t1
-                text: "Bayesian Independent samples T-Test"
-                onClicked: {
-                    console.log("JASP -- clicked")
-                    button.clicked()
-                    popup.close()
-                }
-            }
-
-            Button {
-                id: t2
-                anchors.top: t1.bottom
-                text: "Bayesian Paired samples T-Test"
-                onClicked: {
-                    button.clicked()
-                    popup.close()
-                }
-            }
-
-            Button {
-                id: t3
-                anchors.top: t2.bottom
-                text: "Bayesian One sample T-Test"
-                onClicked: {
-                    button.clicked()
-                    popup.close()
-                }
-            }
-        }
-
+       // menu: ["Bayesian Independent samples T-Test", "Bayesian Paired samples T-Test", "Bayesian One sample T-Test"]
     }
 
 
